@@ -54,3 +54,6 @@ data "aws_iam_policy_document" "reader-policy" {
   }
 }
 
+data "aws_iam_role" "DynamoDBAutoScaleRole" {
+  name = "DynamoDBAutoScaleRole"
+}
