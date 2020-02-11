@@ -77,8 +77,8 @@ resource "aws_appautoscaling_target" "credstash-table-read-target" {
   service_namespace  = "dynamodb"
 }
 
-resource "aws_appautoscaling_policy" "credstash_table_read_policy" {
-  name = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.credstash_table_read_target.resource_id}"
+resource "aws_appautoscaling_policy" "credstash-table-read-policy" {
+  name = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.credstash-table-read-target.resource_id}"
   policy_type = "TargetTrackingScaling"
   resource_id = aws_appautoscaling_target.credstash_table_read_target.resource_id
   scalable_dimension = aws_appautoscaling_target.credstash_table_read_target.scalable_dimension
@@ -93,7 +93,7 @@ resource "aws_appautoscaling_policy" "credstash_table_read_policy" {
 }
 
 ## Writer autoscaling target and policy
-resource "aws_appautoscaling_target" "credstash_table_write_target" {
+resource "aws_appautoscaling_target" "credstash-table-write-target" {
   max_capacity       = var.max_write_capacity
   min_capacity       = var.min_write_capacity
   resource_id        = "table/${aws_dynamodb_table.credstash-db[0].name}"
@@ -102,8 +102,8 @@ resource "aws_appautoscaling_target" "credstash_table_write_target" {
   service_namespace  = "dynamodb"
 }
 
-resource "aws_appautoscaling_policy" "credstash_table_write_policy" {
-  name = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.credstash_table_write_target.resource_id}"
+resource "aws_appautoscaling_policy" "credstash-table-write-policy" {
+  name = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.credstash-table-write-target.resource_id}"
   policy_type = "TargetTrackingScaling"
   resource_id = aws_appautoscaling_target.credstash_table_write_target.resource_id
   scalable_dimension = aws_appautoscaling_target.credstash_table_write_target.scalable_dimension
