@@ -80,3 +80,4 @@ variable "DynamoDBAutoScaleRoleARN" {
   default     = "arn:aws:iam::226989638317:role/aws-service-role/dynamodb.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
   description = "Application autoscaling role for dynamodb"
   type        = string
+}
