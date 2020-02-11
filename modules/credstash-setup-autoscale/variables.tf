@@ -40,19 +40,19 @@ variable "create_writer_policy" {
   type        = string
 }
 
-variable "max_read_capactiy" {
+variable "max_read_capacity" {
   default = 5
   description = "Maximum read capacity for autoscailing credstash table"
   type = number
 }
 
-variable "min_read_capactiy" {
+variable "min_read_capacity" {
   default = 2
   description = "Minimum read capacity for autoscailing credstash table"
   type = number
 }
 
-variable "max_write_capactiy" {
+variable "max_write_capacity" {
   default = 5
   description = "Maximum read capacity for autoscailing credstash table"
   type = number
