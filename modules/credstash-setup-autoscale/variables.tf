@@ -41,37 +41,37 @@ variable "create_writer_policy" {
 }
 
 variable "max_read_capactiy" {
-  default = 10
+  default = 5
   description = "Maximum read capacity for autoscailing credstash table"
   type = number
 }
 
 variable "min_read_capactiy" {
-  default = 5
+  default = 2
   description = "Minimum read capacity for autoscailing credstash table"
   type = number
 }
 
 variable "max_write_capactiy" {
-  default = 10
+  default = 5
   description = "Maximum read capacity for autoscailing credstash table"
   type = number
 }
 
 variable "min_write_capacity" {
-  default = 5
+  default = 2
   description = "Minimum read capacity for autoscailing credstash table"
   type = number
 }
 
 variable "write_target_utilization" {
-  default = 70
+  default = 80
   description = "the ratio of consumed capacity units to provisioned capacity units, expressed as a percentage"
   type = number
 }
 
 variable "read_target_utilization" {
-  default = 70
+  default = 80
   description = "the ratio of consumed capacity units to provisioned capacity units, expressed as a percentage"
   type = number
 }
