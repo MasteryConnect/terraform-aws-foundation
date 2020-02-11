@@ -41,37 +41,42 @@ variable "create_writer_policy" {
 }
 
 variable "max_read_capacity" {
-  default = 5
+  default     = 5
   description = "Maximum read capacity for autoscailing credstash table"
-  type = number
+  type        = number
 }
 
 variable "min_read_capacity" {
-  default = 2
+  default     = 2
   description = "Minimum read capacity for autoscailing credstash table"
-  type = number
+  type        = number
 }
 
 variable "max_write_capacity" {
-  default = 5
+  default     = 5
   description = "Maximum read capacity for autoscailing credstash table"
-  type = number
+  type        = number
 }
 
 variable "min_write_capacity" {
-  default = 2
+  default     = 2
   description = "Minimum read capacity for autoscailing credstash table"
-  type = number
+  type        = number
 }
 
 variable "write_target_utilization" {
-  default = 80
+  default     = 80
   description = "the ratio of consumed capacity units to provisioned capacity units, expressed as a percentage"
-  type = number
+  type        = number
 }
 
 variable "read_target_utilization" {
-  default = 80
+  default     = 80
   description = "the ratio of consumed capacity units to provisioned capacity units, expressed as a percentage"
-  type = number
+  type        = number
 }
+
+variable "DynamoDBAutoScaleRoleARN" {
+  default     = "arn:aws:iam::226989638317:role/aws-service-role/dynamodb.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+  description = "Application autoscaling role for dynamodb"
+  type        = string

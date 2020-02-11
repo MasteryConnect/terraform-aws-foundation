@@ -72,7 +72,7 @@ resource "aws_appautoscaling_target" "credstash-table-read-target" {
   max_capacity       = var.max_read_capacity
   min_capacity       = var.min_read_capacity
   resource_id        = "table/${aws_dynamodb_table.credstash-db[0].name}"
-  role_arn           = data.aws_iam_role.DynamoDBAutoScaleRole.arn
+  role_arn           = var.DynamoDBAutoScaleRoleARN
   scalable_dimension = "dynamodb:table:ReadCapacityUnits"
   service_namespace  = "dynamodb"
 }
@@ -97,7 +97,7 @@ resource "aws_appautoscaling_target" "credstash-table-write-target" {
   max_capacity       = var.max_write_capacity
   min_capacity       = var.min_write_capacity
   resource_id        = "table/${aws_dynamodb_table.credstash-db[0].name}"
-  role_arn           = data.aws_iam_role.DynamoDBAutoScaleRole.arn
+  role_arn           = var.DynamoDBAutoScaleRoleARN
   scalable_dimension = "dynamodb:table:WriteCapacityUnits"
   service_namespace  = "dynamodb"
 }
