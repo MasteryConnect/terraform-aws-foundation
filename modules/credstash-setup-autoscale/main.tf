@@ -80,9 +80,9 @@ resource "aws_appautoscaling_target" "credstash-table-read-target" {
 resource "aws_appautoscaling_policy" "credstash-table-read-policy" {
   name = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.credstash-table-read-target.resource_id}"
   policy_type = "TargetTrackingScaling"
-  resource_id = aws_appautoscaling_target.credstash_table_read_target.resource_id
-  scalable_dimension = aws_appautoscaling_target.credstash_table_read_target.scalable_dimension
-  service_namespace = aws_appautoscaling_target.credstash_table_read_target.service_namespace
+  resource_id = aws_appautoscaling_target.credstash-table-read-target.resource_id
+  scalable_dimension = aws_appautoscaling_target.credstash-table-read-target.scalable_dimension
+  service_namespace = aws_appautoscaling_target.credstash-table-read-target.service_namespace
 
   target_tracking_scaling_policy_configuration {
     predefined_metric_specification {
@@ -105,9 +105,9 @@ resource "aws_appautoscaling_target" "credstash-table-write-target" {
 resource "aws_appautoscaling_policy" "credstash-table-write-policy" {
   name = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.credstash-table-write-target.resource_id}"
   policy_type = "TargetTrackingScaling"
-  resource_id = aws_appautoscaling_target.credstash_table_write_target.resource_id
-  scalable_dimension = aws_appautoscaling_target.credstash_table_write_target.scalable_dimension
-  service_namespace = aws_appautoscaling_target.credstash_table_write_target.service_namespace
+  resource_id = aws_appautoscaling_target.credstash-table-write-target.resource_id
+  scalable_dimension = aws_appautoscaling_target.credstash-table-write-target.scalable_dimension
+  service_namespace = aws_appautoscaling_target.credstash-table-write-target.service_namespace
 
   target_tracking_scaling_policy_configuration {
     predefined_metric_specification {
