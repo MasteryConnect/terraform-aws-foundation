@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "writer-policy" {
         "kms:GenerateDataKey",
       ]
       effect = "Allow"
-      resources = [aws_kms_key.credstash-key.arn]
+      resources = [aws_kms_key.credstash-key[0].arn]
   }
 }
 
@@ -65,6 +65,6 @@ data "aws_iam_policy_document" "reader-policy" {
         "kms:Decrypt",
       ]
       effect = "Allow"
-      resources = [aws_kms_key.credstash-key.arn]
+      resources = [aws_kms_key.credstash-key[0].arn]
   }
 }
