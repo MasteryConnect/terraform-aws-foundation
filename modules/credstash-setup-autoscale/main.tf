@@ -116,3 +116,11 @@ resource "aws_appautoscaling_policy" "credstash-table-write-policy" {
     target_value = var.write_target_utilization
   }
 }
+
+output "credstash_writer_policy_arn" {
+  value = aws_iam_policy.writer-policy.arn
+}
+
+output "credstash_reader_policy_arn" {
+  value = aws_iam_policy.reader-policy.arn
+}

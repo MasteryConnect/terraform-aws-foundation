@@ -35,6 +35,14 @@ data "aws_iam_policy_document" "writer-policy" {
       "arn:${data.aws_partition.current.partition}:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${var.db_table_name}",
     ]
   }
+  statement {
+      actions = [
+        "kms:Decrypt",
+        "kms:GenerateDataKey",
+      ]
+      effect = "Allow"
+      resources = [aws_kms_key.credstash-key.arn]
+  }
 }
 
 # Reader Policy
@@ -51,5 +59,12 @@ data "aws_iam_policy_document" "reader-policy" {
     resources = [
       "arn:${data.aws_partition.current.partition}:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${var.db_table_name}",
     ]
+  }
+  statement {
+      actions = [
+        "kms:Decrypt",
+      ]
+      effect = "Allow"
+      resources = [aws_kms_key.credstash-key.arn]
   }
 }
