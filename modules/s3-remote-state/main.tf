@@ -13,7 +13,6 @@ variable "bucket_name" {
 }
 
 variable "principals" {
-  default     = []
   description = "list of user/role ARNs to get full access to the bucket"
   type        = list(string)
 }
@@ -36,11 +35,25 @@ variable "force_destroy" {
   type        = bool
 }
 
+variable "kms_key_id" {
+  description = "The ARN of a KMS Key to use for encrypting the state"
+  type        = string
+}
+
 resource "aws_s3_bucket" "remote-state" {
   bucket        = var.bucket_name
   acl           = "private"
   region        = var.region
   force_destroy = var.force_destroy
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = var.kms_key_id
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
 
   versioning {
     enabled = var.versioning
@@ -72,8 +85,6 @@ data "aws_iam_policy_document" "s3-full-access" {
   statement {
     effect = "Allow"
 
-    # find an authoritative list of valid Actions for a AWS bucket policy,
-    # I haven't been able to locate one, and the two commented out are invalid
     actions = [
       "s3:PutObject",
       "s3:GetObject",

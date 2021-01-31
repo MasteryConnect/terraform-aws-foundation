@@ -62,7 +62,7 @@ module "server" {
   # The IAM Instance Profile w/ attach_ebs role
   iam_profile   = module.instance_profile.iam_profile_id
   instance_type = var.instance_type
-  # 1 EC2 instance <> 1 EBS volume 
+  # 1 EC2 instance <> 1 EBS volume
   max_nodes       = 1
   min_nodes       = 1
   placement_group = var.placement_group
@@ -77,8 +77,13 @@ module "server" {
   security_group_ids = var.security_group_ids
   subnet_ids         = [var.subnet_id]
 
+  alb_target_group_arns = var.alb_target_group_arns
+
   user_data = <<END_INIT
 #!/bin/bash
+# exec > /tmp/init.log
+# exec 2> /tmp/init-err.log
+# set -x
 ${var.init_prefix}
 ${module.init-attach-ebs.init_snippet}
 ${var.init_suffix}
@@ -88,7 +93,7 @@ END_INIT
 
 # Render init snippet - boxed module to attach the EBS volume to the node
 module "init-attach-ebs" {
-  source = "../init-snippet-attach-ebs-volume"
-  region = var.region
+  source    = "../init-snippet-attach-ebs-volume"
+  region    = var.region
   volume_id = module.service-data.volume_id
 }

@@ -22,6 +22,17 @@ data "aws_ami" "centos" {
     values = ["x86_64"]
   }
 
+  # this filter is here to guarantee that ami's come from the official CentOS.org
+  # we can be sure of the ami's authenticity by filtering by the products id's unique to
+  # CentOS.org, which can be found on their web site at https://wiki.centos.org/Cloud/AWS
+  filter {
+    name   = "product-code"
+    values = [
+      "aw0evgkw8e5c1q413zgy5pjce", # Official `CentOS 7 (x86_64) - with Updates HVM` product id
+      "6x5jmcajty9edm3f211pqjfn2"  # Official `CentOS 6 (x86_64) - with Updates HVM` product id
+    ]
+  }
+
   owners = ["679593333241"]
 
   name_regex = "^CentOS Linux ${var.release} x86_64 HVM EBS ENA"

@@ -6,6 +6,99 @@
 
 ### Examples
 
+# v0.9.16
+
+### Summary
+
+* Improvements to 2 existing modules.
+* 1 new module.
+* 1 new example.
+
+### Modules
+
+* nat-gateways: Add additional variables `enable_nat_creation` and
+  `nat_eip` for enabling support for migrating EIP between NAT
+  gateways.
+* `single-node-asg`: Pass the `alb_target_group_arns` to the `asg` module
+* `single-port-sg-src`: This new module is a fork of the existin `single-port-sg` module (to support `source_security_group`).
+*  `setup-meta-infrastructure`: Add all `Get*` and `List*` actions to `power-user` 
+
+### Examples
+
+* `simple-snag`:  Add a basic example for the Single-Node AutoScaling Group module/pattern 
+
+# v0.9.15
+
+### Summary
+
+Updates to the ASG module
+
+### Modules
+
+* `asg` : Switch up how targets groups are associated with the ASG
+* `asg` : add `protect_from_scale_in` to allow instance termination protection
+* `asg` : add `suspended_processes`
+
+### Examples
+
+* No changes
+
+# v0.9.14
+
+### Summary
+
+New modules and function extendings.
+
+### Modules
+
+* dlm-lifecycle-policy: Merge dlm-lifecycle-iam-role.
+
+* init-snippet-install-docker-yum: CentOS script to install docker/docker-compose.
+
+* init-snippet-attach-ebs-volume: Working on CentOS now. Generates required device name now despite Linux differences.
+
+* single-node-asg: Output the attached EBS Name tag for DLM to match.
+
+* rds: RDS database.
+
+* s3-remote-state: fix for #286.
+
+* asg: add protect_from_scale_in and suspended_processes attrs.
+
+### Examples
+
+* No changes
+
+
+# v0.9.13
+
+### Summary
+
+Fix an issue with the `ami-centos` module where it would pull similarly named ami's
+from untrusted 3rd parties
+
+### Modules
+
+* `ami-centos` in https://github.com/fpco/terraform-aws-foundation/pull/299
+
+### Examples
+
+* No changes
+
+# v0.9.12
+
+### Summary 
+
+Small release to update the `tf-cloud-credential` module to use the `workspace_id`
+instead of the workspace name to set credentials for that workspace.
+
+### Modules
+
+* `tf-cloud-credential` in https://github.com/fpco/terraform-aws-foundation/pull/293
+
+### Examples
+
+* No changes
 
 # v0.9.11
 
