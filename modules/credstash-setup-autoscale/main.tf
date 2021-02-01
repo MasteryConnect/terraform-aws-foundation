@@ -118,9 +118,9 @@ resource "aws_appautoscaling_policy" "credstash-table-write-policy" {
 }
 
 output "credstash_writer_policy_arn" {
-  value = length(aws_iam_policy.writer-policy) > 0 ? aws_iam_policy.writer-policy[0].arn : null
+  value = var.create_writer_policy ? aws_iam_policy.writer-policy[0].arn : null
 }
 
 output "credstash_reader_policy_arn" {
-  value = length(aws_iam_policy.reader-policy) > 0 ? aws_iam_policy.reader-policy[0].arn : null
+  value = var.create_reader_policy ? aws_iam_policy.reader-policy[0].arn : null
 }
