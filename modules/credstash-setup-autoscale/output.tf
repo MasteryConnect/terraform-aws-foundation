@@ -53,3 +53,18 @@ output "writer_policy_arn" {
   description = "Secret Writer policy"
 }
 
+output "credstash_writer_policy_arn" {
+  value = var.create_writer_policy ? aws_iam_policy.writer-policy[0].arn : null
+}
+
+output "credstash_reader_policy_arn" {
+  value = var.create_reader_policy ? aws_iam_policy.reader-policy[0].arn : null
+}
+
+output "credstash_writer_policy" {
+  value = var.create_writer_policy ? data.aws_iam_policy_document.writer-policy : null
+}
+
+output "credstash_reader_policy" {
+  value = var.create_reader_policy ? data.aws_iam_policy_document.reader-policy : null
+}
